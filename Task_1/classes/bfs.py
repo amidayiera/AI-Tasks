@@ -33,3 +33,5 @@ class BfsTraverser:
             queue.append(i)
             #visited[i] = True
             self.visited.append(i)
+      return self.visited
+        

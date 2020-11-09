@@ -1,7 +1,8 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 from classes.bfs import BfsTraverser
- #initialising the graph
+
+#initialising the graph
 G = nx.Graph()
 nodes=["Sports Complex","Siwaka","Ph.1A","Ph.1B","Mada","STC","Phase 2","Phase 3","J1","Parking Lot"]
 G.add_nodes_from(nodes)
@@ -34,17 +35,19 @@ G.nodes["J1"]['pos']=(8,0)
 G.nodes["Mada"]['pos']=(12,0)
 G.nodes["Parking Lot"]['pos']=(8,-8)
 
+node_pos = nx.get_node_attributes(G,'pos')
+
 #store all positions in a variable
 node_pos = nx.get_node_attributes(G,'pos')
 
-#call BFS to return set of all possible routes to the goal
+#call greedy to return set of all possible routes to the goal
 route_bfs = BfsTraverser()
 routes = route_bfs.BFS(G,"Sports Complex","Parking Lot")
 print(route_bfs.visited)
 route_list = route_bfs.visited
 
 #color the nodes in the route_bfs
-node_col = ['#CC99FF' if not node in route_list else '#FF6666' for node in G.nodes()]
+node_col = ['#234edf' if not node in route_list else '#254edf' for node in G.nodes()]
 peru_colored_edges = list(zip(route_list,route_list[1:]))
 
 arc_weight=nx.get_edge_attributes(G,'weight')
